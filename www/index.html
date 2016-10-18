@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html lang="ja">
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta charset="UTF-8"/>
+        <!--
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+
+        <input type="button" class="btn btn-lg" id="firehose_putRecord" value="ログ送信"/>
+
+        <form>
+            <h2>サインアップ</h2>
+            <div id="message" class="alert" style="display:none;"></div>
+            <label for="inputUsername" class="sr-only">ユーザー名</label>
+            <input type="text" id="inputUsername" class="form-control" placeholder="User name" required autofocus/>
+            <label for="inputPassword" class="sr-only">パスワード</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required/>
+            <label for="inputEmail" class="sr-only">メールアドレス</label>
+            <input type="text" id="inputEmail" class="form-control" placeholder="EMail" required/>
+            <label for="inputLocale" class="sr-only">ロケール</label>
+            <input type="text" id="inputLocale" class="form-control" placeholder="Locale" required/>
+            <input type="button" class="btn btn-lg btn-primary btn-bloc" id="user_add_btn" value="ユーザーを作成する"/>
+        </form>
+
+        <form>
+            <h2>コンファーム</h2>
+            <div id="message2" class="alert" style="display:none;"></div>
+            <label for="inputUsername2" class="sr-only">ユーザー名</label>
+            <input type="text" id="inputUsername2" class="form-control" placeholder="User name" required autofocus/>
+            <label for="inputVerificationCode" class="sr-only">コード</label>
+            <input type="text" id="inputVerificationCode" class="form-control" placeholder="Verification Code" required autofocus/>
+            <input type="button" class="btn btn-lg btn-primary btn-bloc" id="user_confirm_btn" value="コンファーム"/>
+        </form>
+
+        <form>
+            <h2>ログイン</h2>
+            <div id="message3" class="alert" style="display:none;"></div>
+            <label for="inputUsername3" class="sr-only">ユーザー名</label>
+            <input type="text" id="inputUsername3" class="form-control" placeholder="User name" required autofocus/>
+            <label for="inputPassword3" class="sr-only">パスワード</label>
+            <input type="password" id="inputPassword3" class="form-control" placeholder="Password" required/>
+            <input type="button" class="btn btn-lg btn-primary btn-bloc" id="user_login_btn" value="ログイン"/>
+        </form>
+
+        <div id="message4" class="alert" style="display:none;"></div>
+        <label for="SNSToken" class="sr-only">SNSToken</label>
+        <input type="text" id="SNSToken" class="form-control" value="bbbb" disabled/>
+
+        <script type="text/javascript" src="js/min/aws-sdk-2.6.9.min.js"></script>
+        <script type="text/javascript" src="js/src/jsbn.js"></script>
+        <script type="text/javascript" src="js/src/jsbn2.js"></script>
+        <script type="text/javascript" src="js/min/sjcl.min.js"></script>
+        <script type="text/javascript" src="js/min/moment.min.js"></script>
+        <script type="text/javascript" src="js/src/aws-cognito-sdk.js"></script>
+        <script type="text/javascript" src="js/min/amazon-cognito-identity.min.js"></script>
+        <script type="text/javascript" src="js/min/jquery-2.2.4.min.js"></script>
+<!--
+        <script type="text/javascript" src="js/min/zepto.min.js"></script>
+        <script type="text/javascript" src="js/src/fx_methods.js"></script>
+        <script>
+            if(!window.jQuery) {
+                Zepto.browser = {webkit: true};
+                window.jQuery = Zepto;
+            }
+        </script>
+-->
+        <script type="text/javascript" src="js/min/bootstrap.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/cognito.js"></script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "jp.co.dreamarts.CordovaPushNotification"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "jp.co.dreamarts.CordovaPushNotification"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "sakurai@dreamarts.co.jp",
+            "PACKAGE_NAME": "jp.co.dreamarts.CordovaPushNotification"
+        }
+    },
+    "dependent_plugins": {}
+}
