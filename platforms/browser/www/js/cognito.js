@@ -7,9 +7,6 @@ var IdentityPoolId = {
 
 var ClientId = '6elsp8qa9ecfbj8la64vrkr8ts'; // アプリID
 
-var DeliveryStreamName = 'sakurai-test2';
-
-
 ///////////////////
 
 var idp = ['cognito-idp', region, 'amazonaws', 'com'].join(".");
@@ -57,62 +54,6 @@ function message(div, message_text, message_class) {
         div.removeClass(message_class);
     });
 }
-
-$('#firehose_putRecord___').click(function() {
-    // Kibana
-    // https://search-sakurai-test-ihlfezqmow2r6sh7ldgc7qhiru.us-east-1.es.amazonaws.com/_plugin/kibana/
-
-    console.log("firehose_putRecord");
-
-    var data = {
-        "@timestamp": new Date(),
-        name: "sakurai",
-        age: 45,
-        createdAt: new Date()
-    };
-
-    var params = {
-        DeliveryStreamName: DeliveryStreamName,
-        Record: {
-            Data: JSON.stringify(data)
-        }
-    };
-    var firehose = new AWS.Firehose();
-    firehose.putRecord(params, function(err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else     console.log(data);           // successful response
-    });
-});
-
-// PutRecordBatch
-// http://docs.aws.amazon.com/firehose/latest/APIReference/API_PutRecordBatch.html
-$('#firehose_putRecord').click(function() {
-
-    console.log("firehose_putRecordBatch");
-
-    var params = {
-        "DeliveryStreamName": DeliveryStreamName,
-        "Records": []
-    };
-    var now = new Date();
-
-    for (var i = 0; i < 10; i++) {
-        var rand = ~~(Math.random() * 30 * 60 * 60 * 24 * 1000);
-        var data = {
-            "@timestamp": new Date(now.getTime() - rand),
-            name: "sakurai",
-            age: rand,
-            createdAt: new Date()
-        };
-        params.Records.push({Data: JSON.stringify(data)});
-    }
-
-    var firehose = new AWS.Firehose();
-    firehose.putRecordBatch(params, function(err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else     console.log(data);           // successful response
-    });
-});
 
 // Use case 1. Registering a user with the application.
 $('#user_add_btn').click(function() {
